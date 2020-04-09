@@ -1,6 +1,7 @@
 use crate::tokenizer::{Encoding, Result};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TruncationParams {
     pub max_length: usize,
     pub strategy: TruncationStrategy,
@@ -28,7 +29,7 @@ impl std::fmt::Display for Error {
 }
 impl std::error::Error for Error {}
 
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub enum TruncationStrategy {
     LongestFirst,
     OnlyFirst,
